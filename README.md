@@ -43,13 +43,14 @@ reference_face = tinyface.get_one_face(reference_img)
 destination_face = tinyface.get_one_face(destination_img)
 
 # Swap a single face
-tinyface.swap_face(input_img, reference_face, destination_face)
+output_img = tinyface.swap_face(input_img, reference_face, destination_face)
 
 # Swap multiple faces
-tinyface.swap_faces(
+output_img = tinyface.swap_faces(
     input_img,
     face_pairs=[FacePair(reference=reference_face, destination=destination_face)],
 )
+cv2.imwrite("out.jpg", output_img)
 ```
 
 ## Commands
@@ -84,4 +85,4 @@ This project is built upon [@henryruhs](https://github.com/henryruhs)'s work on 
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
-> **Note:** TinyFace relies on third-party pre-trained models, each with their own licenses and terms. These are not covered by TinyFace's MIT License.
+> **Note:** TinyFace relies on third-party pre-trained models, each with their own licenses and terms.
