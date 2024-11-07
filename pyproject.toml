@@ -1,0 +1,68 @@
+[tool.poetry]
+name = "tinyface"
+version = "1.0.0"
+description = "The minimalist face swapping tool that just works."
+authors = ["Del Wang <hello@xbox.work>"]
+maintainers = ["Del Wang <hello@xbox.work>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://del.wang"
+repository = "https://github.com/idootop/TinyFace"
+documentation = "https://github.com/idootop/TinyFace/README.md"
+keywords = ["ai", "face swap", "facefusion", "insightface"]
+
+
+[tool.poetry.urls]
+Changelog = "https://github.com/idootop/TinyFace/blob/main/CHANGELOG.md"
+
+
+[tool.poetry.scripts]
+tinyface = "tinyface.cli:main"
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+numpy = "^2.1.2"
+onnx = "^1.17.0"
+onnxruntime = "^1.20.0"
+opencv-python = "^4.10.0.84"
+pooch = "^1.8.2"
+tqdm = "^4.67.0"
+filetype = "^1.2.0"
+async-tasks-python = "^1.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+mypy = "^1.13.0"
+pylint = "^3.3.1"
+
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pylint.main]
+ignored-modules = ["cv2"]
+disable = [
+  "R0903",
+  "R0913",
+  "R0914",
+  "R0915",
+  "R0912",
+  "C0103",
+  "C0301",
+  "C0116",
+  "C0114",
+  "C0115",
+  "W0707",
+  "W0718",
+  "W0614",
+  "W0719",
+  "W0602",
+  "W0102",
+  "W1203",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
