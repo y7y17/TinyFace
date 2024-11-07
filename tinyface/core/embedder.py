@@ -28,7 +28,7 @@ class FaceEmbedder:
     def prepare(self):
         if not self.model_path:
             self.model_path = download(
-                url="https://github.com/facefusion/facefusion-assets/releases/download/models-3.0.0/arcface_w600k_r50.onnx",
+                url="https://github.com/idootop/TinyFace/releases/download/models-1.0.0/arcface_w600k_r50.onnx",
                 known_hash="f1f79dc3b0b79a69f94799af1fffebff09fbd78fd96a275fd8f0cbbea23270d1",
             )
         if not self._session:

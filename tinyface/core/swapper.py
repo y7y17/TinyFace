@@ -31,7 +31,7 @@ class FaceSwapper:
     def prepare(self):
         if not self.model_path:
             self.model_path = download(
-                url="https://github.com/facefusion/facefusion-assets/releases/download/models-3.0.0/inswapper_128_fp16.onnx",
+                url="https://github.com/idootop/TinyFace/releases/download/models-1.0.0/inswapper_128_fp16.onnx",
                 known_hash="c4eccca86ad177586c85c28bf1a64a9d9ed237e283a15818d831f7facfd3f420",
             )
         if not self._session:

@@ -29,7 +29,7 @@ class FaceEnhancer:
     def prepare(self):
         if not self.model_path:
             self.model_path = download(
-                url="https://github.com/facefusion/facefusion-assets/releases/download/models-3.0.0/gfpgan_1.4.onnx",
+                url="https://github.com/idootop/TinyFace/releases/download/models-1.0.0/gfpgan_1.4.onnx",
                 known_hash="accc4757b26bdb89b32b4d3500d4f79c9dff97c1dd7c7104bf9dcb95e3311385",
             )
         if not self._session:

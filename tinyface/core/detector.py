@@ -26,7 +26,7 @@ class FaceDetector:
     def prepare(self):
         if not self.model_path:
             self.model_path = download(
-                url="https://github.com/facefusion/facefusion-assets/releases/download/models-3.0.0/scrfd_2.5g.onnx",
+                url="https://github.com/idootop/TinyFace/releases/download/models-1.0.0/scrfd_2.5g.onnx",
                 known_hash="2c07342347cef21a619c49dd5664fb8c09570ae9eda5bff3e385c11eafc45ada",
             )
         if not self._session:
