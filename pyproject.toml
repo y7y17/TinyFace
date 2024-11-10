@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tinyface"
-version = "1.0.0"
+version = "1.0.1"
 description = "The minimalist face swapping tool that just works."
 authors = ["Del Wang <hello@xbox.work>"]
 maintainers = ["Del Wang <hello@xbox.work>"]

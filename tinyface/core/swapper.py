@@ -12,9 +12,9 @@ from ..utils import create_static_box_mask, paste_back, warp_face_by_face_landma
 
 class FaceSwapper:
     def __init__(self) -> None:
-        self._model: Any = None
         self._session: Optional[InferenceSession] = None
-        self.model_path = global_config().face_detector_model
+        self._model: Any = None
+        self._model_path: Optional[str] = None
         self._model_size = (128, 128)
         self._model_mean = [0.0, 0.0, 0.0]
         self._model_standard_deviation = [1.0, 1.0, 1.0]
@@ -29,14 +29,15 @@ class FaceSwapper:
         )
 
     def prepare(self):
-        if not self.model_path:
-            self.model_path = download(
+        self._model_path = global_config().face_swapper_model
+        if not self._model_path:
+            self._model_path = download(
                 url="https://github.com/idootop/TinyFace/releases/download/models-1.0.0/inswapper_128_fp16.onnx",
                 known_hash="c4eccca86ad177586c85c28bf1a64a9d9ed237e283a15818d831f7facfd3f420",
             )
         if not self._session:
-            self._session = create_inference_session(self.model_path)
-            self._model = load_model(self.model_path)
+            self._session = create_inference_session(self._model_path)
+            self._model = load_model(self._model_path)
 
     def _forward(
         self, crop_vision_frame: VisionFrame, source_face: Face

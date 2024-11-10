@@ -21,16 +21,17 @@ from ..utils import (
 class FaceDetector:
     def __init__(self) -> None:
         self._session: Optional[InferenceSession] = None
-        self.model_path = global_config().face_detector_model
+        self._model_path: Optional[str] = None
 
     def prepare(self):
-        if not self.model_path:
-            self.model_path = download(
+        self._model_path = global_config().face_detector_model
+        if not self._model_path:
+            self._model_path = download(
                 url="https://github.com/idootop/TinyFace/releases/download/models-1.0.0/scrfd_2.5g.onnx",
                 known_hash="2c07342347cef21a619c49dd5664fb8c09570ae9eda5bff3e385c11eafc45ada",
             )
         if not self._session:
-            self._session = create_inference_session(self.model_path)
+            self._session = create_inference_session(self._model_path)
 
     def _forward(self, detect_vision_frame: VisionFrame) -> Detection:
         self.prepare()

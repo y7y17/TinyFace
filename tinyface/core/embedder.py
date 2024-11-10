@@ -13,7 +13,7 @@ from ..utils import warp_face_by_face_landmark_5
 class FaceEmbedder:
     def __init__(self) -> None:
         self._session: Optional[InferenceSession] = None
-        self.model_path = global_config().face_embedder_model
+        self._model_path: Optional[str] = None
         self._model_size = (112, 112)
         self._model_warp_template = numpy.array(
             [
@@ -26,13 +26,14 @@ class FaceEmbedder:
         )
 
     def prepare(self):
-        if not self.model_path:
-            self.model_path = download(
+        self._model_path = global_config().face_embedder_model
+        if not self._model_path:
+            self._model_path = download(
                 url="https://github.com/idootop/TinyFace/releases/download/models-1.0.0/arcface_w600k_r50.onnx",
                 known_hash="f1f79dc3b0b79a69f94799af1fffebff09fbd78fd96a275fd8f0cbbea23270d1",
             )
         if not self._session:
-            self._session = create_inference_session(self.model_path)
+            self._session = create_inference_session(self._model_path)
 
     def _forward(self, crop_vision_frame: VisionFrame) -> Detection:
         self.prepare()

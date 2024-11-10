@@ -14,7 +14,7 @@ from ..utils import create_static_box_mask, paste_back, warp_face_by_face_landma
 class FaceEnhancer:
     def __init__(self) -> None:
         self._session: Optional[InferenceSession] = None
-        self.model_path = global_config().face_detector_model
+        self._model_path: Optional[str] = None
         self._model_size = (512, 512)
         self._model_warp_template = numpy.array(
             [
@@ -27,13 +27,14 @@ class FaceEnhancer:
         )
 
     def prepare(self):
-        if not self.model_path:
-            self.model_path = download(
+        self._model_path = global_config().face_enhancer_model
+        if not self._model_path:
+            self._model_path = download(
                 url="https://github.com/idootop/TinyFace/releases/download/models-1.0.0/gfpgan_1.4.onnx",
                 known_hash="accc4757b26bdb89b32b4d3500d4f79c9dff97c1dd7c7104bf9dcb95e3311385",
             )
         if not self._session:
-            self._session = create_inference_session(self.model_path)
+            self._session = create_inference_session(self._model_path)
 
     def _forward(self, crop_vision_frame: VisionFrame) -> Detection:
         self.prepare()
