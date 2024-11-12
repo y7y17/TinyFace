@@ -5,7 +5,7 @@ import cv2
 import numpy
 from cv2.typing import Size
 
-from tinyface.typing import (
+from .typing import (
     Anchors,
     BoundingBox,
     Distance,
