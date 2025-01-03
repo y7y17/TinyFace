@@ -1,6 +1,6 @@
 # TinyFace
 
-<a href="https://pypi.python.org/pypi/tinyface"><img src="http://img.shields.io/pypi/v/tinyface.svg" alt="Latest version on PyPI"></a> <a href="https://pypi.python.org/pypi/tinyface"><img src="https://img.shields.io/pypi/pyversions/tinyface.svg" alt="Compatible Python versions."></a>
+<a href="https://pypi.python.org/pypi/tinyface"><img src="http://img.shields.io/pypi/v/tinyface.svg" alt="Latest version on PyPI"></a> <a href="https://pypi.python.org/pypi/tinyface"><img src="http://img.shields.io/pypi/dm/tinyface.svg" alt="Monthly downloads on PyPI"></a> <a href="https://pypi.python.org/pypi/tinyface"><img src="https://img.shields.io/pypi/pyversions/tinyface.svg" alt="Compatible Python versions."></a>
 
 TinyFace is designed as a lightweight Python library with a simplified command-line interface, making it easy for both developers and users to perform face swaps.
 
